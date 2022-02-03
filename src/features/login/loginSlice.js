@@ -5,7 +5,7 @@ const apiUrl = "http://localhost:8000";
 
 const token = localStorage.localJWT;
 
-export const fetchAsyncLogin = createAsyncThunk("login/post", async (auth) => {
+export const fetchAsyncLogin = createAsyncThunk("login/post/", async (auth) => {
   const res = await axios.post(`${apiUrl}/authen/jwt/create/`, auth, {
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const fetchAsyncLogin = createAsyncThunk("login/post", async (auth) => {
   return res.data;
 });
 
-export const fetchAsyncRegister = createAsyncThunk("login/register", async (auth) => {
+export const fetchAsyncRegister = createAsyncThunk("api/register/", async (auth) => {
   const res = await axios.post(`${apiUrl}/api/register/`, auth, {
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const fetchAsyncRegister = createAsyncThunk("login/register", async (auth
   return res.data;
 });
 
-export const fetchAsyncProfile = createAsyncThunk("login/get", async () => {
+export const fetchAsyncProfile = createAsyncThunk("login/get/", async () => {
   const res = await axios.get(`${apiUrl}/api/myself/`, {
     headers: {
       Authorization: `JWT ${token}`,
